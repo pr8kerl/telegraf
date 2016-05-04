@@ -466,6 +466,8 @@ func parseSize(sizeStr string) (int64, error) {
 
 func init() {
 	inputs.Add("docker", func() telegraf.Input {
-		return &Docker{}
+		return &Docker{
+			Timeout: internal.Duration{Duration: time.Second * 5},
+		}
 	})
 }
